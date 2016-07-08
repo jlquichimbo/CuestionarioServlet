@@ -1,0 +1,68 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ns0: <ex:> .
+
+<ex:Pregunta1>
+  a <ex:Question> ;
+  rdfs:comment "Cuantos elementos tiene un triplete?" ;
+  ns0:option ns0:Alternativa1a, ns0:Alternativa1b, ns0:Alternativa1c, ns0:Alternativa1d ;
+  ns0:correct ns0:Alternativa1c .
+
+ns0:Alternativa1a
+  a ns0:Option ;
+  rdfs:label "1 Elementos" .
+
+ns0:Alternativa1b
+  a ns0:Option ;
+  rdfs:label "2 Elementos" .
+
+ns0:Alternativa1d
+  a ns0:Option ;
+  rdfs:label "No lo se" .
+
+ns0:Alternativa1c
+  a ns0:Option ;
+  rdfs:label "3 Elementos" .
+
+ns0:Pregunta2
+  a ns0:Question ;
+  rdfs:comment "Cuantas uris puede tener un RDF?" ;
+  ns0:option ns0:Alternativa2a, ns0:Alternativa2b, ns0:Alternativa2c, ns0:Alternativa2d ;
+  ns0:correct ns0:Alternativa2a .
+
+ns0:Alternativa2b
+  a ns0:Option ;
+  rdfs:label "2" .
+
+ns0:Alternativa2c
+  a ns0:Option ;
+  rdfs:label "3" .
+
+ns0:Alternativa2d
+  a ns0:Option ;
+  rdfs:label "Indefinida" .
+
+ns0:Alternativa2a
+  a ns0:Option ;
+  rdfs:label "1" .
+
+ns0:Pregunta3
+  a ns0:Question ;
+  rdfs:comment "Materia de Web Semantica" ;
+  ns0:option ns0:Alternativa3a, ns0:Alternativa3b, ns0:Alternativa3c, ns0:Alternativa3d ;
+  ns0:correct ns0:Alternativa3c .
+
+ns0:Alternativa3a
+  a ns0:Option ;
+  rdfs:label "IA" .
+
+ns0:Alternativa3b
+  a ns0:Option ;
+  rdfs:label "SW" .
+
+ns0:Alternativa3d
+  a ns0:Option ;
+  rdfs:label "OTRA" .
+
+ns0:Alternativa3c
+  a ns0:Option ;
+  rdfs:label "SBC" .
