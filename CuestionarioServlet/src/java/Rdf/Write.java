@@ -34,8 +34,25 @@ public class Write {
     public static void main(String[] args) throws JsonProcessingException {
         // TODO code application logic here      
         org.apache.log4j.BasicConfigurator.configure(new NullAppender());
+        
+                /*Lectura del archivo .rdf o .ttl*/
+        String urlRead = "cuestionario.rdf";
+//        String urlRead = "cuestionario.ttl";
+        Model model = ModelFactory.createDefaultModel();
+        readRDF(model, urlRead);
+        String groupResourceURI = "http://example.org/Group";
+        String questionResourceURI = "http://example.org/Question";
+        String optionPropertyURI = "http://example.org/option";
 
-        /*Declaracion de variables*/
+
+
+        generarCuestionario(model, groupResourceURI, questionResourceURI, optionPropertyURI);
+
+    }
+    
+    public static void generarCuestionario(Model model, String groupResourceURI, 
+            String questionResourceURI, String optionPropertyURI) throws JsonProcessingException{
+                /*Declaracion de variables*/
 //        ArrayList<String> optionsList;
         HashMap<String, Grupo> groupsDictionary;
         groupsDictionary = new HashMap<>();
@@ -43,13 +60,13 @@ public class Write {
         StmtIterator iterGroup;
         Resource actualGroupResource;
         String actualGroupString;
-        String groupResourceURI = "http://example.org/Group";
+//        String groupResourceURI = "http://example.org/Group";
         ArrayList<Grupo> grupos;
         //Pregunta
         StmtIterator iterQuestion;
         Resource actualQuestionResource;
         String actualQuestionString;
-        String questionResourceURI = "http://example.org/Question";
+//        String questionResourceURI = "http://example.org/Question";
         String questionPropertyURI = "http://example.org/question";
         ArrayList<Pregunta> preguntas;
         //Opcion
@@ -57,15 +74,15 @@ public class Write {
         Resource actualOptionResource;
         String optionQuestionString;
         Statement correctOption;
-        String optionPropertyURI = "http://example.org/option";
+//        String optionPropertyURI = "http://example.org/option";
         String optionCorrectPropertyURI = "http://example.org/correct";
         ArrayList<Opcion> opciones;
 
         /*Lectura del archivo .rdf o .ttl*/
 //        String urlRead = "cuestionario.rdf";
-        String urlRead = "cuestionario.ttl";
-        Model model = ModelFactory.createDefaultModel();
-        readRDF(model, urlRead);
+//        String urlRead = "cuestionario.ttl";
+//        Model model = ModelFactory.createDefaultModel();
+//        readRDF(model, urlRead);
 
         /*ITERATE GROUPS*/
         iterGroup = model.listStatements(new SimpleSelector(null, RDF.type, model.getResource(groupResourceURI)));
@@ -75,7 +92,7 @@ public class Write {
                 Grupo grupoObject;
                 preguntas = new ArrayList<>();
                 actualGroupResource = iterGroup.nextStatement().getSubject();
-                actualGroupString = actualGroupResource.getProperty(RDFS.label).getObject().toString();
+                actualGroupString = actualGroupResource.getProperty(RDFS.comment).getObject().toString();
                 //iterQuestion con actual Grupo
                 iterQuestion = model.listStatements(new SimpleSelector(actualGroupResource,
                         model.getProperty(questionPropertyURI), (RDFNode) null));
@@ -86,7 +103,7 @@ public class Write {
                         Pregunta objectPregunta;
                         opciones = new ArrayList<>();
                         actualQuestionResource = model.getResource(iterQuestion.nextStatement().getObject().toString());
-                        actualQuestionString = actualQuestionResource.getProperty(RDFS.label).getObject().toString();
+                        actualQuestionString = actualQuestionResource.getProperty(RDFS.comment).getObject().toString();
                         correctOption = model.getRequiredProperty(actualQuestionResource, model.getProperty(optionCorrectPropertyURI));
                         //iterOption con actual Pregunta
                         iterOption = model.listStatements(
@@ -120,6 +137,7 @@ public class Write {
         }
         System.out.println(generateJSON(groupsDictionary));
     }
+    
 
     public static String generateJSON(HashMap groupsDictionary) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
