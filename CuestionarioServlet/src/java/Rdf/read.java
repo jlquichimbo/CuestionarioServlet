@@ -44,9 +44,11 @@ public class read extends HttpServlet {
                     //property option
        // String optionPropertyURI = "ex:option";
             //String OpcionC = "ex:correct";
-        String optionPropertyURI = request.getParameter("pregunta");
-        String OpcionC = request.getParameter("correcta");
-        Property optionProperty = model.createProperty(optionPropertyURI);
+        String groupResourceURI = request.getParameter("grupo");
+        String preguntaResourceURI = request.getParameter("pregunta");
+        String respuestaResourceURI = request.getParameter("respuesta");
+        String OpcionC = request.getParameter("correcta");   
+        Property optionProperty = model.createProperty(preguntaResourceURI);
         // select all the resources with a VCARD.FN property
 
         ResIterator iter = model.listResourcesWithProperty(optionProperty);
@@ -66,7 +68,7 @@ public class read extends HttpServlet {
 
                 iterOption = model.listStatements(
                         new SimpleSelector(actualQuestion,
-                                model.getProperty(optionPropertyURI), (RDFNode) null));
+                                model.getProperty(preguntaResourceURI), (RDFNode) null));
                 correct = model.getRequiredProperty(actualQuestion, model.getProperty(OpcionC));
                 while (iterOption.hasNext()) {
                     actualOption = model.getResource(iterOption.nextStatement().getObject().toString());
