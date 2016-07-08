@@ -37,9 +37,8 @@ public class Write {
 
         /*Declaracion de variables*/
 //        ArrayList<String> optionsList;
-        HashMap<String, ArrayList> groupsDictionary;
+        HashMap<String, Grupo> groupsDictionary;
         groupsDictionary = new HashMap<>();
-        JsonArray arrayJson;
         //Grupo
         StmtIterator iterGroup;
         Resource actualGroupResource;
@@ -108,30 +107,27 @@ public class Write {
                         preguntas.add(objectPregunta);
 
                         /*Generamos el diccionario de opciones para la actual pregunta*/
-                        groupsDictionary.put(actualQuestionString, opciones);
                         i++;
                     }
                 }
                 grupoObject = new Grupo(actualGroupResource.getURI(), actualGroupString, preguntas);
+                groupsDictionary.put(actualGroupResource.getURI(), grupoObject);
                 grupos.add(grupoObject);
             }
 
         } else {
             System.out.println("No were found in the database");
         }
-        arrayJson = new JsonArray();
-        for (Grupo grupo : grupos) {
-            printGrupo(grupo);
-        }
+        System.out.println(generateJSON(groupsDictionary));
+    }
+
+    public static String generateJSON(HashMap groupsDictionary) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
         String jsonFromMap = mapper.writeValueAsString((Map) groupsDictionary);
-//        System.out.println(jsonFromMap);
-//        printModel(model);
-//        model.write(System.out, "JSON-LD");    
-//        model.write(System.out, "RDF/JSON");
+        return jsonFromMap;
     }
-    
-    public static void printGrupo(Grupo grupo){
+
+    public static void printGrupo(Grupo grupo) {
         ArrayList<Pregunta> preguntas = grupo.getPreguntas();
         System.out.println("******** GRUPO **********");
         System.out.println(grupo.getId() + " " + grupo.getLabel());
