@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:ns0="http://example.org/">
+
+  <rdf:Description rdf:about="http://example.org/Pregunta1">
+    <rdf:type rdf:resource="http://example.org/Question"/>
+    <rdfs:label>Cuantos elementos tiene un triplete?</rdfs:label>
+    <ns0:option>
+      <ns0:Option rdf:about="http://example.org/Alternativa1a">
+        <rdfs:label>1 Elementos</rdfs:label>
+      </ns0:Option>
+    </ns0:option>
+
+    <ns0:option>
+      <ns0:Option rdf:about="http://example.org/Alternativa1b">
+        <rdfs:label>2 Elementos</rdfs:label>
+      </ns0:Option>
+    </ns0:option>
+
+    <ns0:option rdf:resource="http://example.org/Alternativa1c"/>
+    <ns0:option>
+      <ns0:Option rdf:about="http://example.org/Alternativa1d">
+        <rdfs:label>4 Elementos</rdfs:label>
+      </ns0:Option>
+    </ns0:option>
+
+    <ns0:correct rdf:resource="http://example.org/Alternativa1c"/>
+  </rdf:Description>
+
+  <ns0:Option rdf:about="http://example.org/Alternativa1c">
+    <rdfs:label>3 Elementos</rdfs:label>
+  </ns0:Option>
+
+  <ns0:Question rdf:about="http://example.org/Pregunta2">
+    <rdfs:label>Cual es el formato de una tripleta?</rdfs:label>
+    <ns0:option rdf:resource="http://example.org/Alternativa2a"/>
+    <ns0:option>
+      <ns0:Option rdf:about="http://example.org/Alternativa2b">
+        <rdfs:label>JSON</rdfs:label>
+      </ns0:Option>
+    </ns0:option>
+
+    <ns0:option>
+      <ns0:Option rdf:about="http://example.org/Alternativa2c">
+        <rdfs:label>XML</rdfs:label>
+      </ns0:Option>
+    </ns0:option>
+
+    <ns0:option>
+      <ns0:Option rdf:about="http://example.org/Alternativa2d">
+        <rdfs:label>RDF</rdfs:label>
+      </ns0:Option>
+    </ns0:option>
+
+    <ns0:correct rdf:resource="http://example.org/Alternativa2a"/>
+  </ns0:Question>
+
+  <ns0:Option rdf:about="http://example.org/Alternativa2a">
+    <rdfs:label>N-TRIPLES</rdfs:label>
+  </ns0:Option>
+
+  <ns0:Question rdf:about="http://example.org/Pregunta4">
+    <rdfs:label>Que propiedad de vcard identifica el nombre completo?</rdfs:label>
+    <ns0:option>
+      <ns0:Option rdf:about="http://example.org/Alternativa4a">
+        <rdfs:label>vcard.n</rdfs:label>
+      </ns0:Option>
+    </ns0:option>
+
+    <ns0:option>
+      <ns0:Option rdf:about="http://example.org/Alternativa4b">
+        <rdfs:label>vcard.given</rdfs:label>
+      </ns0:Option>
+    </ns0:option>
+
+    <ns0:option rdf:resource="http://example.org/Alternativa4c"/>
+    <ns0:option>
+      <ns0:Option rdf:about="http://example.org/Alternativa4d">
+        <rdfs:label>vcard.full</rdfs:label>
+      </ns0:Option>
+    </ns0:option>
+
+    <ns0:correct rdf:resource="http://example.org/Alternativa4c"/>
+  </ns0:Question>
+
+  <ns0:Option rdf:about="http://example.org/Alternativa4c">
+    <rdfs:label>vcard.FN</rdfs:label>
+  </ns0:Option>
+
+  <ns0:Question rdf:about="http://example.org/Pregunta3">
+    <rdfs:label>Cual metodo de Jena lista las tripletas?</rdfs:label>
+    <ns0:option rdf:resource="http://example.org/Alternativa3a"/>
+    <ns0:option>
+      <ns0:Option rdf:about="http://example.org/Alternativa3b">
+        <rdfs:label>Model.listSubjects()</rdfs:label>
+      </ns0:Option>
+    </ns0:option>
+
+    <ns0:option>
+      <ns0:Option rdf:about="http://example.org/Alternativa3c">
+        <rdfs:label>Model.listProperties()</rdfs:label>
+      </ns0:Option>
+    </ns0:option>
+
+    <ns0:option>
+      <ns0:Option rdf:about="http://example.org/Alternativa3d">
+        <rdfs:label>Model.listSubjectsWithProperty()</rdfs:label>
+      </ns0:Option>
+    </ns0:option>
+
+    <ns0:correct rdf:resource="http://example.org/Alternativa3a"/>
+  </ns0:Question>
+
+  <ns0:Option rdf:about="http://example.org/Alternativa3a">
+    <rdfs:label>Model.listStatements()</rdfs:label>
+  </ns0:Option>
+
+</rdf:RDF>
