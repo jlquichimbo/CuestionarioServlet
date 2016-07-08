@@ -13,6 +13,11 @@ public class Opcion {
     private String id;
     private String label;
 
+    public Opcion(String id, String label) {
+        this.id = id;
+        this.label = label;
+    }
+
     /**
      * @return the id
      */

@@ -35,7 +35,7 @@ public class Write {
         org.apache.log4j.BasicConfigurator.configure(new NullAppender());
 
         /*Declaracion de variables*/
-        ArrayList<String> optionsList;
+//        ArrayList<String> optionsList;
         HashMap<String, ArrayList> questionsDicctionary;
         questionsDicctionary = new HashMap<>();
         //Grupo
@@ -56,6 +56,7 @@ public class Write {
         Statement correctOption;
         String optionPropertyURI = "http://example.org/option";
         String optionCorrectPropertyURI = "http://example.org/correct";
+        ArrayList<Opcion> optionsList;
 
         /*Lectura del archivo .rdf o .ttl*/
 //        String urlRead = "cuestionario.rdf";
@@ -63,17 +64,18 @@ public class Write {
         Model model = ModelFactory.createDefaultModel();
         readRDF(model, urlRead);
 
-        //list groups
+        /*ITERATE GROUPS*/
         iterGroup = model.listStatements(new SimpleSelector(null, RDF.type, model.getResource(groupResourceURI)));
         if (iterGroup.hasNext()) {
             while (iterGroup.hasNext()) {
                 actualGroupResource = iterGroup.nextStatement().getSubject();
                 actualGroupString = actualGroupResource.getProperty(RDFS.label).getObject().toString();
-                System.out.println(" " + actualGroupString);
+//                System.out.println(" " + actualGroupString);
                 // list questions
                 iterQuestion = model.listStatements(new SimpleSelector(actualGroupResource,
                         model.getProperty(questionPropertyURI), (RDFNode) null));
                 int i = 1;
+                /*ITERATE QUESTIONS*/
                 if (iterQuestion.hasNext()) {
                     while (iterQuestion.hasNext()) {
                         optionsList = new ArrayList<>();
@@ -84,21 +86,25 @@ public class Write {
                         iterOption = model.listStatements(
                                 new SimpleSelector(actualQuestionResource,
                                         model.getProperty(optionPropertyURI), (RDFNode) null));
+                        /*ArrayList de Opciones*/
 //                        correctOption = model.getRequiredProperty(actualQuestionResource, model.getProperty(optionCorrectPropertyURI));
-                        //**Recorre las opciones del objeto iterOption
+                        /*ITERATE OPTIONS*/
                         while (iterOption.hasNext()) {
+                            Opcion newOpcionObject;
                             actualOptionResource = model.getResource(iterOption.nextStatement().getObject().toString());
                             optionQuestionString = actualOptionResource.getProperty(RDFS.label).getObject().toString();
-                            optionsList.add(optionQuestionString);
+                            newOpcionObject = new Opcion(actualOptionResource.getURI(), optionQuestionString);
+                            optionsList.add(newOpcionObject);
+                            System.out.println(newOpcionObject.getId() +": "+newOpcionObject.getLabel());
 //                    if (correctOption.getObject().toString().equals(actualOption.toString())) {
 //                        optionQuestionString +=  "** Correcta";
 //                        optionsList.add(optionQuestionString);
 //                    } 
-                            System.out.println("  " + optionQuestionString);
+//                            System.out.println("  " + optionQuestionString);
                         }
                         /*Genneramos el diccionario de opciones para la actual pregunta*/
                         questionsDicctionary.put(actualQuestionString, optionsList);
-//                System.out.println(optionsList);
+                        System.out.println(optionsList);
                         i++;
                     }
                 }
