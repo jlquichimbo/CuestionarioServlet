@@ -30,6 +30,10 @@
                     <td>Tipo Respuesta : </td>
                     <td><input type="text" name="respuesta" size="20"/> </td>
                 </tr>
+                                <tr>
+                    <td>Tipo Pregunta : </td>
+                    <td><input type="text" name="tipoPregunta" size="20"/> </td>
+                </tr>
                 <tr>
                     <td>Opcion Correcta : </td>
                     <td><input type="text" name="correcta" size="20"/> </td>

@@ -3,117 +3,253 @@
          xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
          xmlns:ns0="http://example.org/">
 
-  <rdf:Description rdf:about="http://example.org/Pregunta1">
-    <rdf:type rdf:resource="http://example.org/Question"/>
-    <rdfs:label>Cuantos elementos tiene un triplete?</rdfs:label>
-    <ns0:option>
-      <ns0:Option rdf:about="http://example.org/Alternativa1a">
-        <rdfs:label>1 Elementos</rdfs:label>
-      </ns0:Option>
-    </ns0:option>
+  <rdf:Description rdf:about="http://example.org/Grupo1">
+    <rdf:type rdf:resource="http://example.org/Group"/>
+    <rdfs:comment>Capitulo 1</rdfs:comment>
+    <ns0:question>
+      <ns0:Question rdf:about="http://example.org/Pregunta1">
+        <rdfs:comment>Cuantos elementos tiene un triplete?</rdfs:comment>
+        <ns0:option>
+          <ns0:Option rdf:about="http://example.org/Alternativa1a">
+            <rdfs:label>1 Elementos</rdfs:label>
+          </ns0:Option>
+        </ns0:option>
 
-    <ns0:option>
-      <ns0:Option rdf:about="http://example.org/Alternativa1b">
-        <rdfs:label>2 Elementos</rdfs:label>
-      </ns0:Option>
-    </ns0:option>
+        <ns0:option>
+          <ns0:Option rdf:about="http://example.org/Alternativa1b">
+            <rdfs:label>2 Elementos</rdfs:label>
+          </ns0:Option>
+        </ns0:option>
 
-    <ns0:option rdf:resource="http://example.org/Alternativa1c"/>
-    <ns0:option>
-      <ns0:Option rdf:about="http://example.org/Alternativa1d">
-        <rdfs:label>4 Elementos</rdfs:label>
-      </ns0:Option>
-    </ns0:option>
+        <ns0:option rdf:resource="http://example.org/Alternativa1c"/>
+        <ns0:option>
+          <ns0:Option rdf:about="http://example.org/Alternativa1d">
+            <rdfs:label>4 Elementos</rdfs:label>
+          </ns0:Option>
+        </ns0:option>
 
-    <ns0:correct rdf:resource="http://example.org/Alternativa1c"/>
+        <ns0:correct rdf:resource="http://example.org/Alternativa1c"/>
+      </ns0:Question>
+    </ns0:question>
+
+    <ns0:question>
+      <ns0:Question rdf:about="http://example.org/Pregunta2">
+        <rdfs:comment>Cual es el formato de una tripleta?</rdfs:comment>
+        <ns0:option rdf:resource="http://example.org/Alternativa2a"/>
+        <ns0:option>
+          <ns0:Option rdf:about="http://example.org/Alternativa2b">
+            <rdfs:label>JSON</rdfs:label>
+          </ns0:Option>
+        </ns0:option>
+
+        <ns0:option>
+          <ns0:Option rdf:about="http://example.org/Alternativa2c">
+            <rdfs:label>XML</rdfs:label>
+          </ns0:Option>
+        </ns0:option>
+
+        <ns0:option>
+          <ns0:Option rdf:about="http://example.org/Alternativa2d">
+            <rdfs:label>RDF</rdfs:label>
+          </ns0:Option>
+        </ns0:option>
+
+        <ns0:correct rdf:resource="http://example.org/Alternativa2a"/>
+      </ns0:Question>
+    </ns0:question>
+
+    <ns0:question>
+      <ns0:Question rdf:about="http://example.org/Pregunta3">
+        <rdfs:comment>Cual metodo de Jena lista las tripletas?</rdfs:comment>
+        <ns0:option rdf:resource="http://example.org/Alternativa3a"/>
+        <ns0:option>
+          <ns0:Option rdf:about="http://example.org/Alternativa3b">
+            <rdfs:label>Model.listSubjects()</rdfs:label>
+          </ns0:Option>
+        </ns0:option>
+
+        <ns0:option>
+          <ns0:Option rdf:about="http://example.org/Alternativa3c">
+            <rdfs:label>Model.listProperties()</rdfs:label>
+          </ns0:Option>
+        </ns0:option>
+
+        <ns0:option>
+          <ns0:Option rdf:about="http://example.org/Alternativa3d">
+            <rdfs:label>Model.listSubjectsWithProperty()</rdfs:label>
+          </ns0:Option>
+        </ns0:option>
+
+        <ns0:correct rdf:resource="http://example.org/Alternativa3a"/>
+      </ns0:Question>
+    </ns0:question>
+
+    <ns0:question>
+      <ns0:Question rdf:about="http://example.org/Pregunta4">
+        <rdfs:comment>Que propiedad de vcard identifica el nombre completo?</rdfs:comment>
+        <ns0:option>
+          <ns0:Option rdf:about="http://example.org/Alternativa4a">
+            <rdfs:label>vcard.n</rdfs:label>
+          </ns0:Option>
+        </ns0:option>
+
+        <ns0:option>
+          <ns0:Option rdf:about="http://example.org/Alternativa4b">
+            <rdfs:label>vcard.given</rdfs:label>
+          </ns0:Option>
+        </ns0:option>
+
+        <ns0:option rdf:resource="http://example.org/Alternativa4c"/>
+        <ns0:option>
+          <ns0:Option rdf:about="http://example.org/Alternativa4d">
+            <rdfs:label>vcard.full</rdfs:label>
+          </ns0:Option>
+        </ns0:option>
+
+        <ns0:correct rdf:resource="http://example.org/Alternativa4c"/>
+      </ns0:Question>
+    </ns0:question>
+
   </rdf:Description>
+
+  <ns0:Group rdf:about="http://example.org/Grupo2">
+    <rdfs:comment>Capitulo 2</rdfs:comment>
+    <ns0:question>
+      <ns0:Question rdf:about="http://example.org/Pregunta5">
+        <rdfs:comment>Cual de las siguientes definiciones corresponde a SBC?</rdfs:comment>
+        <ns0:option>
+          <ns0:Option rdf:about="http://example.org/Alternativa5a">
+            <rdfs:label>Es un conjunto de funciones java</rdfs:label>
+          </ns0:Option>
+        </ns0:option>
+
+        <ns0:option rdf:resource="http://example.org/Alternativa5b"/>
+        <ns0:option>
+          <ns0:Option rdf:about="http://example.org/Alternativa5c">
+            <rdfs:label>Es una arquitectura de desarrollo</rdfs:label>
+          </ns0:Option>
+        </ns0:option>
+
+        <ns0:option>
+          <ns0:Option rdf:about="http://example.org/Alternativa5d">
+            <rdfs:label>Es una metodologia basada en conocimiento</rdfs:label>
+          </ns0:Option>
+        </ns0:option>
+
+        <ns0:correct rdf:resource="http://example.org/Alternativa5b"/>
+      </ns0:Question>
+    </ns0:question>
+
+    <ns0:question>
+      <ns0:Question rdf:about="http://example.org/Pregunta6">
+        <rdfs:comment>Que es una ontologia?</rdfs:comment>
+        <ns0:option>
+          <ns0:Option rdf:about="http://example.org/Alternativa6a">
+            <rdfs:label>Es un conjunto de funciones python</rdfs:label>
+          </ns0:Option>
+        </ns0:option>
+
+        <ns0:option>
+          <ns0:Option rdf:about="http://example.org/Alternativa6b">
+            <rdfs:label>Es un mecanismo de linked data</rdfs:label>
+          </ns0:Option>
+        </ns0:option>
+
+        <ns0:option>
+          <ns0:Option rdf:about="http://example.org/Alternativa6c">
+            <rdfs:label>Es un formato big data</rdfs:label>
+          </ns0:Option>
+        </ns0:option>
+
+        <ns0:option rdf:resource="http://example.org/Alternativa6d"/>
+        <ns0:correct rdf:resource="http://example.org/Alternativa6d"/>
+      </ns0:Question>
+    </ns0:question>
+
+    <ns0:question>
+      <ns0:Question rdf:about="http://example.org/Pregunta7">
+        <rdfs:comment>Que es RDF</rdfs:comment>
+        <ns0:option>
+          <ns0:Option rdf:about="http://example.org/Alternativa7a">
+            <rdfs:label>Un lenguaje de programacion</rdfs:label>
+          </ns0:Option>
+        </ns0:option>
+
+        <ns0:option>
+          <ns0:Option rdf:about="http://example.org/Alternativa7b">
+            <rdfs:label>Una alternativa a big data</rdfs:label>
+          </ns0:Option>
+        </ns0:option>
+
+        <ns0:option>
+          <ns0:Option rdf:about="http://example.org/Alternativa7c">
+            <rdfs:label>Una secuencia de instrucciones</rdfs:label>
+          </ns0:Option>
+        </ns0:option>
+
+        <ns0:option rdf:resource="http://example.org/Alternativa7d"/>
+        <ns0:correct rdf:resource="http://example.org/Alternativa7d"/>
+      </ns0:Question>
+    </ns0:question>
+
+    <ns0:question>
+      <ns0:Question rdf:about="http://example.org/Pregunta8">
+        <rdfs:comment>Como se compone una tripleta?</rdfs:comment>
+        <ns0:option>
+          <ns0:Option rdf:about="http://example.org/Alternativa8a">
+            <rdfs:label>Sujeto, patron, objeto</rdfs:label>
+          </ns0:Option>
+        </ns0:option>
+
+        <ns0:option rdf:resource="http://example.org/Alternativa8b"/>
+        <ns0:option>
+          <ns0:Option rdf:about="http://example.org/Alternativa8c">
+            <rdfs:label>Secuencia, objeto, grafo</rdfs:label>
+          </ns0:Option>
+        </ns0:option>
+
+        <ns0:option>
+          <ns0:Option rdf:about="http://example.org/Alternativa8d">
+            <rdfs:label>Modelo, grafo, objeto</rdfs:label>
+          </ns0:Option>
+        </ns0:option>
+
+        <ns0:correct rdf:resource="http://example.org/Alternativa8b"/>
+      </ns0:Question>
+    </ns0:question>
+
+  </ns0:Group>
 
   <ns0:Option rdf:about="http://example.org/Alternativa1c">
     <rdfs:label>3 Elementos</rdfs:label>
   </ns0:Option>
 
-  <ns0:Question rdf:about="http://example.org/Pregunta2">
-    <rdfs:label>Cual es el formato de una tripleta?</rdfs:label>
-    <ns0:option rdf:resource="http://example.org/Alternativa2a"/>
-    <ns0:option>
-      <ns0:Option rdf:about="http://example.org/Alternativa2b">
-        <rdfs:label>JSON</rdfs:label>
-      </ns0:Option>
-    </ns0:option>
-
-    <ns0:option>
-      <ns0:Option rdf:about="http://example.org/Alternativa2c">
-        <rdfs:label>XML</rdfs:label>
-      </ns0:Option>
-    </ns0:option>
-
-    <ns0:option>
-      <ns0:Option rdf:about="http://example.org/Alternativa2d">
-        <rdfs:label>RDF</rdfs:label>
-      </ns0:Option>
-    </ns0:option>
-
-    <ns0:correct rdf:resource="http://example.org/Alternativa2a"/>
-  </ns0:Question>
-
   <ns0:Option rdf:about="http://example.org/Alternativa2a">
     <rdfs:label>N-TRIPLES</rdfs:label>
   </ns0:Option>
 
-  <ns0:Question rdf:about="http://example.org/Pregunta4">
-    <rdfs:label>Que propiedad de vcard identifica el nombre completo?</rdfs:label>
-    <ns0:option>
-      <ns0:Option rdf:about="http://example.org/Alternativa4a">
-        <rdfs:label>vcard.n</rdfs:label>
-      </ns0:Option>
-    </ns0:option>
-
-    <ns0:option>
-      <ns0:Option rdf:about="http://example.org/Alternativa4b">
-        <rdfs:label>vcard.given</rdfs:label>
-      </ns0:Option>
-    </ns0:option>
-
-    <ns0:option rdf:resource="http://example.org/Alternativa4c"/>
-    <ns0:option>
-      <ns0:Option rdf:about="http://example.org/Alternativa4d">
-        <rdfs:label>vcard.full</rdfs:label>
-      </ns0:Option>
-    </ns0:option>
-
-    <ns0:correct rdf:resource="http://example.org/Alternativa4c"/>
-  </ns0:Question>
+  <ns0:Option rdf:about="http://example.org/Alternativa3a">
+    <rdfs:label>Model.listStatements()</rdfs:label>
+  </ns0:Option>
 
   <ns0:Option rdf:about="http://example.org/Alternativa4c">
     <rdfs:label>vcard.FN</rdfs:label>
   </ns0:Option>
 
-  <ns0:Question rdf:about="http://example.org/Pregunta3">
-    <rdfs:label>Cual metodo de Jena lista las tripletas?</rdfs:label>
-    <ns0:option rdf:resource="http://example.org/Alternativa3a"/>
-    <ns0:option>
-      <ns0:Option rdf:about="http://example.org/Alternativa3b">
-        <rdfs:label>Model.listSubjects()</rdfs:label>
-      </ns0:Option>
-    </ns0:option>
+  <ns0:Option rdf:about="http://example.org/Alternativa5b">
+    <rdfs:label>Mantiene una gran cantidad de conocimiento y aportan mecanismos para manejarlo</rdfs:label>
+  </ns0:Option>
 
-    <ns0:option>
-      <ns0:Option rdf:about="http://example.org/Alternativa3c">
-        <rdfs:label>Model.listProperties()</rdfs:label>
-      </ns0:Option>
-    </ns0:option>
+  <ns0:Option rdf:about="http://example.org/Alternativa6d">
+    <rdfs:label>Es una representacion de datos</rdfs:label>
+  </ns0:Option>
 
-    <ns0:option>
-      <ns0:Option rdf:about="http://example.org/Alternativa3d">
-        <rdfs:label>Model.listSubjectsWithProperty()</rdfs:label>
-      </ns0:Option>
-    </ns0:option>
+  <ns0:Option rdf:about="http://example.org/Alternativa7d">
+    <rdfs:label>Un modelo basado en grafos que permite generar vocabularios</rdfs:label>
+  </ns0:Option>
 
-    <ns0:correct rdf:resource="http://example.org/Alternativa3a"/>
-  </ns0:Question>
-
-  <ns0:Option rdf:about="http://example.org/Alternativa3a">
-    <rdfs:label>Model.listStatements()</rdfs:label>
+  <ns0:Option rdf:about="http://example.org/Alternativa8b">
+    <rdfs:label>Sujeto, predicado, objeto</rdfs:label>
   </ns0:Option>
 
 </rdf:RDF>

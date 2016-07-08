@@ -5,7 +5,7 @@
 
   <rdf:Description rdf:about="ex:Grupo1">
     <rdf:type rdf:resource="ex:Group"/>
-    <rdfs:label>Capitulo 1</rdfs:label>
+    <rdfs:comment>Capitulo 1</rdfs:comment>
     <ns0:question>
       <ns0:Question rdf:about="ex:Pregunta1">
         <rdfs:comment>Cuantos elementos tiene un triplete?</rdfs:comment>
@@ -83,8 +83,6 @@
         <ns0:correct rdf:resource="ex:Alternativa3c"/>
       </ns0:Question>
     </ns0:question>
-
-    <ns0:question rdf:resource="ex:Pregunta4"/>
   </rdf:Description>
 
   <ns0:Option rdf:about="ex:Alternativa1c">
