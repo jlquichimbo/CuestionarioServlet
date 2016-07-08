@@ -3,21 +3,21 @@
 @prefix ex: <http://example.org/>.
 
 ex:Grupo1 rdf:type ex:Group .
-ex:Grupo1 rdfs:label "Capitulo 1" .
+ex:Grupo1 rdfs:comment "Capitulo 1" .
 ex:Grupo1 ex:question ex:Pregunta1 .
 ex:Grupo1 ex:question ex:Pregunta2 .
 ex:Grupo1 ex:question ex:Pregunta3 .
 ex:Grupo1 ex:question ex:Pregunta4 .
 
 ex:Grupo2 rdf:type ex:Group .
-ex:Grupo2 rdfs:label "Capitulo 2" .
+ex:Grupo2 rdfs:comment "Capitulo 2" .
 ex:Grupo2 ex:question ex:Pregunta5 .
 ex:Grupo2 ex:question ex:Pregunta6 .
 ex:Grupo2 ex:question ex:Pregunta7 .
 ex:Grupo2 ex:question ex:Pregunta8 .
 
 ex:Pregunta1 rdf:type ex:Question .
-ex:Pregunta1 rdfs:label "Cuantos elementos tiene un triplete?" .
+ex:Pregunta1 rdfs:comment "Cuantos elementos tiene un triplete?" .
 ex:Pregunta1 ex:option ex:Alternativa1a .
 ex:Pregunta1 ex:option ex:Alternativa1b .
 ex:Pregunta1 ex:option ex:Alternativa1c .
@@ -37,7 +37,7 @@ ex:Alternativa1d rdf:type ex:Option .
 ex:Alternativa1d rdfs:label "4 Elementos" .
 
 ex:Pregunta2 rdf:type ex:Question .
-ex:Pregunta2 rdfs:label "Cual es el formato de una tripleta?" .
+ex:Pregunta2 rdfs:comment "Cual es el formato de una tripleta?" .
 ex:Pregunta2 ex:option ex:Alternativa2a .
 ex:Pregunta2 ex:option ex:Alternativa2b .
 ex:Pregunta2 ex:option ex:Alternativa2c .
@@ -56,7 +56,7 @@ ex:Alternativa2d rdf:type ex:Option .
 ex:Alternativa2d rdfs:label "RDF" .
 
 ex:Pregunta3 rdf:type ex:Question .
-ex:Pregunta3 rdfs:label "Cual metodo de Jena lista las tripletas?" .
+ex:Pregunta3 rdfs:comment "Cual metodo de Jena lista las tripletas?" .
 ex:Pregunta3 ex:option ex:Alternativa3a .
 ex:Pregunta3 ex:option ex:Alternativa3b .
 ex:Pregunta3 ex:option ex:Alternativa3c .
@@ -75,7 +75,7 @@ ex:Alternativa3d rdf:type ex:Option .
 ex:Alternativa3d rdfs:label "Model.listSubjectsWithProperty()" .
 
 ex:Pregunta4 rdf:type ex:Question .
-ex:Pregunta4 rdfs:label "Que propiedad de vcard identifica el nombre completo?" .
+ex:Pregunta4 rdfs:comment "Que propiedad de vcard identifica el nombre completo?" .
 ex:Pregunta4 ex:option ex:Alternativa4a .
 ex:Pregunta4 ex:option ex:Alternativa4b .
 ex:Pregunta4 ex:option ex:Alternativa4c .
@@ -96,7 +96,7 @@ ex:Alternativa4d rdfs:label "vcard.full" .
 
 
 ex:Pregunta5 rdf:type ex:Question .
-ex:Pregunta5 rdfs:label "Cual de las siguientes definiciones corresponde a SBC?" .
+ex:Pregunta5 rdfs:comment "Cual de las siguientes definiciones corresponde a SBC?" .
 ex:Pregunta5 ex:option ex:Alternativa5a .
 ex:Pregunta5 ex:option ex:Alternativa5b .
 ex:Pregunta5 ex:option ex:Alternativa5c .
@@ -115,7 +115,7 @@ ex:Alternativa5d rdf:type ex:Option .
 ex:Alternativa5d rdfs:label "Es una metodologia basada en conocimiento" .
 
 ex:Pregunta6 rdf:type ex:Question .
-ex:Pregunta6 rdfs:label "Que es una ontologia?" .
+ex:Pregunta6 rdfs:comment "Que es una ontologia?" .
 ex:Pregunta6 ex:option ex:Alternativa6a .
 ex:Pregunta6 ex:option ex:Alternativa6b .
 ex:Pregunta6 ex:option ex:Alternativa6c .
@@ -134,7 +134,7 @@ ex:Alternativa6d rdf:type ex:Option .
 ex:Alternativa6d rdfs:label "Es una representacion de datos" .
 
 ex:Pregunta7 rdf:type ex:Question .
-ex:Pregunta7 rdfs:label "Que es RDF" .
+ex:Pregunta7 rdfs:comment "Que es RDF" .
 ex:Pregunta7 ex:option  ex:Alternativa7a .
 ex:Pregunta7 ex:option  ex:Alternativa7b .
 ex:Pregunta7 ex:option  ex:Alternativa7c .
@@ -150,7 +150,7 @@ ex:Alternativa7d rdf:type ex:Option .
 ex:Alternativa7d rdfs:label "Un modelo basado en grafos que permite generar vocabularios" .
 
 ex:Pregunta8 rdf:type ex:Question .
-ex:Pregunta8 rdfs:label "Como se compone una tripleta?" .
+ex:Pregunta8 rdfs:comment "Como se compone una tripleta?" .
 ex:Pregunta8 ex:option  ex:Alternativa8a .
 ex:Pregunta8 ex:option  ex:Alternativa8b .
 ex:Pregunta8 ex:option  ex:Alternativa8c .
