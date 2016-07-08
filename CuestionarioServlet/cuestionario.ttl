@@ -1,0 +1,166 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix ex: <http://example.org/>.
+
+ex:Grupo1 rdf:type ex:Group .
+ex:Grupo1 rdfs:label "Capitulo 1" .
+ex:Grupo1 ex:question ex:Pregunta1 .
+ex:Grupo1 ex:question ex:Pregunta2 .
+ex:Grupo1 ex:question ex:Pregunta3 .
+ex:Grupo1 ex:question ex:Pregunta4 .
+
+ex:Grupo2 rdf:type ex:Group .
+ex:Grupo2 rdfs:label "Capitulo 2" .
+ex:Grupo2 ex:question ex:Pregunta5 .
+ex:Grupo2 ex:question ex:Pregunta6 .
+ex:Grupo2 ex:question ex:Pregunta7 .
+ex:Grupo2 ex:question ex:Pregunta8 .
+
+ex:Pregunta1 rdf:type ex:Question .
+ex:Pregunta1 rdfs:label "Cuantos elementos tiene un triplete?" .
+ex:Pregunta1 ex:option ex:Alternativa1a .
+ex:Pregunta1 ex:option ex:Alternativa1b .
+ex:Pregunta1 ex:option ex:Alternativa1c .
+ex:Pregunta1 ex:option ex:Alternativa1d .
+ex:Pregunta1 ex:correct ex:Alternativa1c .
+
+ex:Alternativa1a rdf:type ex:Option .
+ex:Alternativa1a rdfs:label "1 Elementos" .
+
+ex:Alternativa1b rdf:type ex:Option .
+ex:Alternativa1b rdfs:label "2 Elementos" .
+
+ex:Alternativa1c rdf:type ex:Option .
+ex:Alternativa1c rdfs:label "3 Elementos" .
+
+ex:Alternativa1d rdf:type ex:Option .
+ex:Alternativa1d rdfs:label "4 Elementos" .
+
+ex:Pregunta2 rdf:type ex:Question .
+ex:Pregunta2 rdfs:label "Cual es el formato de una tripleta?" .
+ex:Pregunta2 ex:option ex:Alternativa2a .
+ex:Pregunta2 ex:option ex:Alternativa2b .
+ex:Pregunta2 ex:option ex:Alternativa2c .
+ex:Pregunta2 ex:option ex:Alternativa2d .
+ex:Pregunta2 ex:correct ex:Alternativa2a .
+ex:Alternativa2a rdf:type ex:Option .
+ex:Alternativa2a rdfs:label "N-TRIPLES" .
+
+ex:Alternativa2b rdf:type ex:Option .
+ex:Alternativa2b rdfs:label "JSON" .
+
+ex:Alternativa2c rdf:type ex:Option .
+ex:Alternativa2c rdfs:label "XML" .
+
+ex:Alternativa2d rdf:type ex:Option .
+ex:Alternativa2d rdfs:label "RDF" .
+
+ex:Pregunta3 rdf:type ex:Question .
+ex:Pregunta3 rdfs:label "Cual metodo de Jena lista las tripletas?" .
+ex:Pregunta3 ex:option ex:Alternativa3a .
+ex:Pregunta3 ex:option ex:Alternativa3b .
+ex:Pregunta3 ex:option ex:Alternativa3c .
+ex:Pregunta3 ex:option ex:Alternativa3d .
+ex:Pregunta3 ex:correct ex:Alternativa3a .
+ex:Alternativa3a rdf:type ex:Option .
+ex:Alternativa3a rdfs:label "Model.listStatements()" .
+
+ex:Alternativa3b rdf:type ex:Option .
+ex:Alternativa3b rdfs:label "Model.listSubjects()" .
+
+ex:Alternativa3c rdf:type ex:Option .
+ex:Alternativa3c rdfs:label "Model.listProperties()" .
+
+ex:Alternativa3d rdf:type ex:Option .
+ex:Alternativa3d rdfs:label "Model.listSubjectsWithProperty()" .
+
+ex:Pregunta4 rdf:type ex:Question .
+ex:Pregunta4 rdfs:label "Que propiedad de vcard identifica el nombre completo?" .
+ex:Pregunta4 ex:option ex:Alternativa4a .
+ex:Pregunta4 ex:option ex:Alternativa4b .
+ex:Pregunta4 ex:option ex:Alternativa4c .
+ex:Pregunta4 ex:option ex:Alternativa4d .
+ex:Pregunta4 ex:correct ex:Alternativa4c .
+ex:Alternativa4a rdf:type ex:Option .
+ex:Alternativa4a rdfs:label "vcard.n" .
+
+ex:Alternativa4b rdf:type ex:Option .
+ex:Alternativa4b rdfs:label "vcard.given" .
+
+ex:Alternativa4c rdf:type ex:Option .
+ex:Alternativa4c rdfs:label "vcard.FN" .
+
+ex:Alternativa4d rdf:type ex:Option .
+ex:Alternativa4d rdfs:label "vcard.full" .
+
+
+
+ex:Pregunta5 rdf:type ex:Question .
+ex:Pregunta5 rdfs:label "Cual de las siguientes definiciones corresponde a SBC?" .
+ex:Pregunta5 ex:option ex:Alternativa5a .
+ex:Pregunta5 ex:option ex:Alternativa5b .
+ex:Pregunta5 ex:option ex:Alternativa5c .
+ex:Pregunta5 ex:option ex:Alternativa5d .
+ex:Pregunta5 ex:correct ex:Alternativa5b .
+ex:Alternativa5a rdf:type ex:Option .
+ex:Alternativa5a rdfs:label "Es un conjunto de funciones java" .
+
+ex:Alternativa5b rdf:type ex:Option .
+ex:Alternativa5b rdfs:label "Mantiene una gran cantidad de conocimiento y aportan mecanismos para manejarlo" .
+
+ex:Alternativa5c rdf:type ex:Option .
+ex:Alternativa5c rdfs:label "Es una arquitectura de desarrollo" .
+
+ex:Alternativa5d rdf:type ex:Option .
+ex:Alternativa5d rdfs:label "Es una metodologia basada en conocimiento" .
+
+ex:Pregunta6 rdf:type ex:Question .
+ex:Pregunta6 rdfs:label "Que es una ontologia?" .
+ex:Pregunta6 ex:option ex:Alternativa6a .
+ex:Pregunta6 ex:option ex:Alternativa6b .
+ex:Pregunta6 ex:option ex:Alternativa6c .
+ex:Pregunta6 ex:option ex:Alternativa6d .
+ex:Pregunta6 ex:correct ex:Alternativa6d .
+ex:Alternativa6a rdf:type ex:Option .
+ex:Alternativa6a rdfs:label "Es un conjunto de funciones python" .
+
+ex:Alternativa6b rdf:type ex:Option .
+ex:Alternativa6b rdfs:label "Es un mecanismo de linked data" .
+
+ex:Alternativa6c rdf:type ex:Option .
+ex:Alternativa6c rdfs:label "Es un formato big data" .
+
+ex:Alternativa6d rdf:type ex:Option .
+ex:Alternativa6d rdfs:label "Es una representacion de datos" .
+
+ex:Pregunta7 rdf:type ex:Question .
+ex:Pregunta7 rdfs:label "Que es RDF" .
+ex:Pregunta7 ex:option  ex:Alternativa7a .
+ex:Pregunta7 ex:option  ex:Alternativa7b .
+ex:Pregunta7 ex:option  ex:Alternativa7c .
+ex:Pregunta7 ex:option  ex:Alternativa7d .
+ex:Pregunta7 ex:correct ex:Alternativa7d .
+ex:Alternativa7a rdf:type ex:Option .
+ex:Alternativa7a rdfs:label "Un lenguaje de programacion" .
+ex:Alternativa7b rdf:type ex:Option .
+ex:Alternativa7b rdfs:label "Una alternativa a big data" .
+ex:Alternativa7c rdf:type ex:Option .
+ex:Alternativa7c rdfs:label "Una secuencia de instrucciones" .
+ex:Alternativa7d rdf:type ex:Option .
+ex:Alternativa7d rdfs:label "Un modelo basado en grafos que permite generar vocabularios" .
+
+ex:Pregunta8 rdf:type ex:Question .
+ex:Pregunta8 rdfs:label "Como se compone una tripleta?" .
+ex:Pregunta8 ex:option  ex:Alternativa8a .
+ex:Pregunta8 ex:option  ex:Alternativa8b .
+ex:Pregunta8 ex:option  ex:Alternativa8c .
+ex:Pregunta8 ex:option  ex:Alternativa8d .
+ex:Pregunta8 ex:correct ex:Alternativa8b .
+ex:Alternativa8a rdf:type ex:Option .
+ex:Alternativa8a rdfs:label "Sujeto, patron, objeto" .
+ex:Alternativa8b rdf:type ex:Option .
+ex:Alternativa8b rdfs:label "Sujeto, predicado, objeto" .
+ex:Alternativa8c rdf:type ex:Option .
+ex:Alternativa8c rdfs:label "Secuencia, objeto, grafo" .
+ex:Alternativa8d rdf:type ex:Option .
+ex:Alternativa8d rdfs:label "Modelo, grafo, objeto" .
