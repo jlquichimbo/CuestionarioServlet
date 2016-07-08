@@ -32,8 +32,8 @@ public class Write {
     public static void main(String[] args) throws JsonProcessingException {
         // TODO code application logic here      
         org.apache.log4j.BasicConfigurator.configure(new NullAppender());
-        
-                /*Lectura del archivo .rdf o .ttl*/
+
+        /*Lectura del archivo .rdf o .ttl*/
 //        String urlRead = "practica.rdf";
 //        String urlRead = "cuestionario.ttl";
         String urlRead = "cuestionario.rdf";
@@ -43,15 +43,13 @@ public class Write {
         String questionResourceURI = "http://example.org/Question";
         String optionPropertyURI = "http://example.org/option";
 
-
-
         generarCuestionario(model, groupResourceURI, questionResourceURI, optionPropertyURI);
 
     }
-    
-    public static void generarCuestionario(Model model, String groupResourceURI, 
-            String questionResourceURI, String optionPropertyURI) throws JsonProcessingException{
-                /*Declaracion de variables*/
+
+    public static String generarCuestionario(Model model, String groupResourceURI,
+            String questionResourceURI, String optionPropertyURI) throws JsonProcessingException {
+        /*Declaracion de variables*/
 //        ArrayList<String> optionsList;
         HashMap<String, Grupo> groupsDictionary;
         groupsDictionary = new HashMap<>();
@@ -134,9 +132,9 @@ public class Write {
         } else {
             System.out.println("No were found in the database");
         }
-        System.out.println(generateJSON(groupsDictionary));
+//        System.out.println(generateJSON(groupsDictionary));
+        return generateJSON(groupsDictionary);
     }
-    
 
     public static String generateJSON(HashMap groupsDictionary) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
