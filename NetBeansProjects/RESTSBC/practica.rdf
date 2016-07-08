@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:ns0="ex:">
+
+  <rdf:Description rdf:about="ex:Pregunta1">
+    <rdf:type rdf:resource="ex:Question"/>
+    <rdfs:comment>Cuantos elementos tiene un triplete?</rdfs:comment>
+    <ns0:option>
+      <ns0:Option rdf:about="ex:Alternativa1a">
+        <rdfs:label>1 Elementos</rdfs:label>
+      </ns0:Option>
+    </ns0:option>
+
+    <ns0:option>
+      <ns0:Option rdf:about="ex:Alternativa1b">
+        <rdfs:label>2 Elementos</rdfs:label>
+      </ns0:Option>
+    </ns0:option>
+
+    <ns0:option rdf:resource="ex:Alternativa1c"/>
+    <ns0:option>
+      <ns0:Option rdf:about="ex:Alternativa1d">
+        <rdfs:label>No lo se</rdfs:label>
+      </ns0:Option>
+    </ns0:option>
+
+    <ns0:correct rdf:resource="ex:Alternativa1c"/>
+  </rdf:Description>
+
+  <ns0:Option rdf:about="ex:Alternativa1c">
+    <rdfs:label>3 Elementos</rdfs:label>
+  </ns0:Option>
+
+  <ns0:Question rdf:about="ex:Pregunta2">
+    <rdfs:comment>Cuantas uris puede tener un RDF?</rdfs:comment>
+    <ns0:option rdf:resource="ex:Alternativa2a"/>
+    <ns0:option>
+      <ns0:Option rdf:about="ex:Alternativa2b">
+        <rdfs:label>2</rdfs:label>
+      </ns0:Option>
+    </ns0:option>
+
+    <ns0:option>
+      <ns0:Option rdf:about="ex:Alternativa2c">
+        <rdfs:label>3</rdfs:label>
+      </ns0:Option>
+    </ns0:option>
+
+    <ns0:option>
+      <ns0:Option rdf:about="ex:Alternativa2d">
+        <rdfs:label>Indefinida</rdfs:label>
+      </ns0:Option>
+    </ns0:option>
+
+    <ns0:correct rdf:resource="ex:Alternativa2a"/>
+  </ns0:Question>
+
+  <ns0:Option rdf:about="ex:Alternativa2a">
+    <rdfs:label>1</rdfs:label>
+  </ns0:Option>
+
+  <ns0:Question rdf:about="ex:Pregunta3">
+    <rdfs:comment>Materia de Web Semantica</rdfs:comment>
+    <ns0:option>
+      <ns0:Option rdf:about="ex:Alternativa3a">
+        <rdfs:label>IA</rdfs:label>
+      </ns0:Option>
+    </ns0:option>
+
+    <ns0:option>
+      <ns0:Option rdf:about="ex:Alternativa3b">
+        <rdfs:label>SW</rdfs:label>
+      </ns0:Option>
+    </ns0:option>
+
+    <ns0:option rdf:resource="ex:Alternativa3c"/>
+    <ns0:option>
+      <ns0:Option rdf:about="ex:Alternativa3d">
+        <rdfs:label>OTRA</rdfs:label>
+      </ns0:Option>
+    </ns0:option>
+
+    <ns0:correct rdf:resource="ex:Alternativa3c"/>
+  </ns0:Question>
+
+  <ns0:Option rdf:about="ex:Alternativa3c">
+    <rdfs:label>SBC</rdfs:label>
+  </ns0:Option>
+
+</rdf:RDF>
