@@ -36,7 +36,7 @@ public class Write {
         org.apache.log4j.BasicConfigurator.configure(new NullAppender());
         
                 /*Lectura del archivo .rdf o .ttl*/
-        String urlRead = "cuestionario.rdf";
+        String urlRead = "practica.rdf";
 //        String urlRead = "cuestionario.ttl";
         Model model = ModelFactory.createDefaultModel();
         readRDF(model, urlRead);
