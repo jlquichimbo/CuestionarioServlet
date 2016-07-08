@@ -17,6 +17,13 @@ public class Pregunta {
     private String idCorrect;
     private ArrayList<Opcion> opciones;
 
+    public Pregunta(String id, String label, String idCorrect, ArrayList<Opcion> opciones) {
+        this.id = id;
+        this.label = label;
+        this.idCorrect = idCorrect;
+        this.opciones = opciones;
+    }
+
     /**
      * @return the id
      */
