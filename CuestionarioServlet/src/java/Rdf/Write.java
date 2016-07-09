@@ -4,24 +4,19 @@
  * and open the template in the editor.
  */
 package Rdf;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import org.apache.jena.rdf.model.Model;
-import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.SimpleSelector;
 import org.apache.jena.rdf.model.Statement;
 import org.apache.jena.rdf.model.StmtIterator;
-import org.apache.jena.util.FileManager;
 import org.apache.jena.vocabulary.RDF;
 import org.apache.jena.vocabulary.RDFS;
-import org.apache.log4j.varia.NullAppender;
 
 /**
  *
@@ -29,29 +24,11 @@ import org.apache.log4j.varia.NullAppender;
  */
 public class Write {
 
-    public static void main(String[] args) throws JsonProcessingException {
-        // TODO code application logic here      
-        org.apache.log4j.BasicConfigurator.configure(new NullAppender());
-
-        /*Lectura del archivo .rdf o .ttl*/
-//        String urlRead = "practica.rdf";
-//        String urlRead = "cuestionario.ttl";
-        String urlRead = "cuestionario.rdf";
-        Model model = ModelFactory.createDefaultModel();
-        readRDF(model, urlRead);
-        String groupResourceURI = "http://example.org/Group";
-        String questionResourceURI = "http://example.org/Question";
-        String optionPropertyURI = "http://example.org/option";
-
-        System.out.println(generarCuestionario(model, groupResourceURI, questionResourceURI, optionPropertyURI));
-
-    }
-
-    public static String generarCuestionario(Model model, String groupResourceURI,
-            String questionResourceURI, String optionPropertyURI) throws JsonProcessingException {
+    public static Map generarCuestionario(Model model, String groupResourceURI,
+            String questionResourceURI, String optionPropertyURI, String optionCorrectPropertyURI) throws JsonProcessingException {
         /*Declaracion de variables*/
 //        ArrayList<String> optionsList;
-        HashMap<String, ArrayList> groupsDictionary;
+        Map<String, ArrayList> groupsDictionary;
         groupsDictionary = new HashMap<>();
         //Grupo
         StmtIterator iterGroup;
@@ -63,23 +40,15 @@ public class Write {
         StmtIterator iterQuestion;
         Resource actualQuestionResource;
         String actualQuestionString;
-//        String questionResourceURI = "http://example.org/Question";
-        String questionPropertyURI = "http://example.org/question";
+ //       String questionPropertyURI = "http://example.org/question";
         ArrayList<Pregunta> preguntas;
         //Opcion
         StmtIterator iterOption;
         Resource actualOptionResource;
         String optionQuestionString;
         Statement correctOption;
-//        String optionPropertyURI = "http://example.org/option";
-        String optionCorrectPropertyURI = "http://example.org/correct";
+//        String optionCorrectPropertyURI = "http://example.org/correct";
         ArrayList<Opcion> opciones;
-
-        /*Lectura del archivo .rdf o .ttl*/
-//        String urlRead = "cuestionario.rdf";
-//        String urlRead = "cuestionario.ttl";
-//        Model model = ModelFactory.createDefaultModel();
-//        readRDF(model, urlRead);
 
         /*ITERATE GROUPS*/
         iterGroup = model.listStatements(new SimpleSelector(null, RDF.type, model.getResource(groupResourceURI)));
@@ -92,7 +61,7 @@ public class Write {
                 actualGroupString = actualGroupResource.getProperty(RDFS.comment).getObject().toString();
                 //iterQuestion con actual Grupo
                 iterQuestion = model.listStatements(new SimpleSelector(actualGroupResource,
-                        model.getProperty(questionPropertyURI), (RDFNode) null));
+                        model.getProperty(questionResourceURI), (RDFNode) null));
                 int i = 1;
                 /*ITERATE QUESTIONS*/
                 if (iterQuestion.hasNext()) {
@@ -133,7 +102,8 @@ public class Write {
         }
         groupsDictionary.put("grupos", grupos);
 //        System.out.println(generateJSON(groupsDictionary));
-        return generateJSON(groupsDictionary);
+//        return generateJSON(groupsDictionary);
+        return groupsDictionary;
     }
 
     public static String generateJSON(HashMap groupsDictionary) throws JsonProcessingException {
@@ -159,19 +129,4 @@ public class Write {
         }
         System.out.println("Correcta: " + pregunta.getIdCorrect());
     }
-
-    public static void readRDF(Model model, String urlRead) {
-        // use the FileManager to find the input file
-        InputStream in = FileManager.get().open(urlRead);
-        if (in == null) {
-            throw new IllegalArgumentException(
-                    "File: " + urlRead + " not found");
-        }
-
-        // read the RDF/XML file
-//        model.read(in, "TTL");
-//        model.read(urlRead, "TURTLE");
-        model.read(urlRead, "RDF/XML");
-    }
-
 }

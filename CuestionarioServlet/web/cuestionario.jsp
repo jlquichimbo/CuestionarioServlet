@@ -24,26 +24,15 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Cuestionario Viewer</a>
+                    <a class="navbar-brand" href="#">Cuestionario Rdf</a>
                 </div>
-                <div id="navbar" class="navbar-collapse collapse">
-                    <form class="navbar-form navbar-right" role="form">
-                        <div class="form-group">
-                            <input type="text" placeholder="Email" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" placeholder="Password" class="form-control">
-                        </div>
-                        <button type="submit" class="btn btn-success">Sign in</button>
-                    </form>
-                </div><!--/.navbar-collapse -->
             </div>
         </nav>
 
         <!-- Main jumbotron for a primary marketing message or call to action -->
         <div class="jumbotron">
             <div class="container">
-                <h1>Cuestionario</h1>
+                <p class="text-right">Desarrolle el presente examen</p>
                 <!--<p><a id="get_data" class="btn btn-primary btn-lg" href="#" role="button">Mostrar Datos &raquo;</a></p>-->
                 <div id="json_out">
 
@@ -70,14 +59,15 @@
                     </c:forEach>
                 </c:forEach>
             </div>
-            <input id="terminarBtn" class="btn btn-success" type="button" value="Terminar Cuestionario"/>
+            <input id="terminarBtn" class="pull-right btn btn-success" type="button" value="Calificar"/>
+            <input onclick="location.href='upload.jsp';" class="pull-right btn btn-error" type="button" value="Atras"/>
         </div> <!-- /container --> 
 
 
         <hr>
     </body>
     <footer>
-        <p>&copy; Roberth Loaiza, Jose Quichimbo 2016</p>
+        <p class="text-center">&copy; Roberth Loaiza, Jose Quichimbo 2016</p>
     </footer>
     <script>
 //        CALIFICACION VIA SCRIPT
