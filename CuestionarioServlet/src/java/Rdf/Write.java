@@ -43,7 +43,7 @@ public class Write {
         String questionResourceURI = "http://example.org/Question";
         String optionPropertyURI = "http://example.org/option";
 
-        generarCuestionario(model, groupResourceURI, questionResourceURI, optionPropertyURI);
+        System.out.println(generarCuestionario(model, groupResourceURI, questionResourceURI, optionPropertyURI));
 
     }
 
@@ -51,7 +51,7 @@ public class Write {
             String questionResourceURI, String optionPropertyURI) throws JsonProcessingException {
         /*Declaracion de variables*/
 //        ArrayList<String> optionsList;
-        HashMap<String, Grupo> groupsDictionary;
+        HashMap<String, ArrayList> groupsDictionary;
         groupsDictionary = new HashMap<>();
         //Grupo
         StmtIterator iterGroup;
@@ -125,13 +125,13 @@ public class Write {
                     }
                 }
                 grupoObject = new Grupo(actualGroupResource.getURI(), actualGroupString, preguntas);
-                groupsDictionary.put(actualGroupResource.getURI(), grupoObject);
                 grupos.add(grupoObject);
             }
 
         } else {
             System.out.println("No were found in the database");
         }
+        groupsDictionary.put("grupos", grupos);
 //        System.out.println(generateJSON(groupsDictionary));
         return generateJSON(groupsDictionary);
     }

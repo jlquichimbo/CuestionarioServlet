@@ -1,5 +1,6 @@
 package Rdf;
 
+import static Rdf.Write.generateJSON;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.FileOutputStream;
@@ -58,54 +59,17 @@ public class read extends HttpServlet {
 
 
         /*WRITE JSON*/
-        String cuestionarioJson = generarCuestionario(model, groupResourceURI, questionResourceURI, optionPropertyURI);
-        out.println(cuestionarioJson);
-        request.setAttribute("grupos", cuestionarioJson);
+        Map cuestionarioJson = generarCuestionario(model, groupResourceURI, questionResourceURI, optionPropertyURI);
+        request.setAttribute("cuestionario", cuestionarioJson);
         request.getRequestDispatcher("/cuestionario.jsp").forward(request, response);
 
-//        Property optionProperty = model.createProperty(optionPropertyURI);
-//        // select all the resources with a VCARD.FN property
-//
-//        ResIterator iter = model.listResourcesWithProperty(optionProperty);
-//        ResIterator prop1 = model.listSubjectsWithProperty(RDFS.comment);
-//
-//        StmtIterator iterOption;
-//        Resource actualQuestion;
-//        Resource actualOption;
-//        String option;
-//
-//        Statement correct;
-//        if (iter.hasNext()) {
-//            while (iter.hasNext()) {
-//                actualQuestion = iter.nextResource();
-//                out.println(actualQuestion.getLocalName() + " : " + prop1.nextResource().
-//                        getRequiredProperty(RDFS.comment).getString() + "<br>");
-//
-//                iterOption = model.listStatements(
-//                        new SimpleSelector(actualQuestion,
-//                                model.getProperty(optionPropertyURI), (RDFNode) null));
-//                correct = model.getRequiredProperty(actualQuestion, model.getProperty(OpcionC));
-//                while (iterOption.hasNext()) {
-//                    actualOption = model.getResource(iterOption.nextStatement().getObject().toString());
-//                    option = actualOption.getProperty(RDFS.label).getString();
-//                    if (correct.getObject().toString().equals(actualOption.toString())) {
-//                        out.println(option + "*<br>");
-//
-//                    } else {
-//                        out.println(option + "<br>");
-//                    }
-//                }
-//            }
-//        } else {
-//            System.out.println("No were found in the database");
-//        }
     } // end of doPost()
 
-    public static String generarCuestionario(Model model, String groupResourceURI,
+    public static Map generarCuestionario(Model model, String groupResourceURI,
             String questionResourceURI, String optionPropertyURI) throws JsonProcessingException {
         /*Declaracion de variables*/
 //        ArrayList<String> optionsList;
-        HashMap<String, Grupo> groupsDictionary;
+        Map<String, ArrayList> groupsDictionary;
         groupsDictionary = new HashMap<>();
         //Grupo
         StmtIterator iterGroup;
@@ -128,12 +92,6 @@ public class read extends HttpServlet {
 //        String optionPropertyURI = "http://example.org/option";
         String optionCorrectPropertyURI = "http://example.org/correct";
         ArrayList<Opcion> opciones;
-
-        /*Lectura del archivo .rdf o .ttl*/
-//        String urlRead = "cuestionario.rdf";
-//        String urlRead = "cuestionario.ttl";
-//        Model model = ModelFactory.createDefaultModel();
-//        readRDF(model, urlRead);
 
         /*ITERATE GROUPS*/
         iterGroup = model.listStatements(new SimpleSelector(null, RDF.type, model.getResource(groupResourceURI)));
@@ -179,15 +137,16 @@ public class read extends HttpServlet {
                     }
                 }
                 grupoObject = new Grupo(actualGroupResource.getURI(), actualGroupString, preguntas);
-                groupsDictionary.put(actualGroupResource.getURI(), grupoObject);
                 grupos.add(grupoObject);
             }
 
         } else {
             System.out.println("No were found in the database");
         }
+        groupsDictionary.put("grupos", grupos);
 //        System.out.println(generateJSON(groupsDictionary));
-        return generateJSON(groupsDictionary);
+//        return generateJSON(groupsDictionary);
+        return groupsDictionary;
     }
 
     public static String generateJSON(HashMap groupsDictionary) throws JsonProcessingException {
@@ -213,6 +172,5 @@ public class read extends HttpServlet {
         }
         System.out.println("Correcta: " + pregunta.getIdCorrect());
     }
-
 
 } // end of UploadServlet

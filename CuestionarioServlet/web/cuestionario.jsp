@@ -54,22 +54,24 @@
         <div class="container">
             <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
             <div class="row containerGroups">
-                    <c:forEach items="${grupos}" var="grupo">
-                            <p>${grupo}</p>
+                <c:forEach items="${cuestionario.grupos}" var="grupo">
+                    <h2 class="group">${grupo.label}</h2>
+                    <c:forEach items="${grupo.preguntas}" var="pregunta">
+                        <fieldset class="preguntaFieldset">
+                            <legend class="question">${pregunta.label}</legend>
+                            <c:forEach items="${pregunta.opciones}" var="opcion">
+                                <input type="radio" name="${pregunta.id}" value="Cat" />${opcion.label}<br />
+                            </c:forEach>
+                        </fieldset>  
+                        <br>
                     </c:forEach>
-<!--                <h2 class="group">Grupo 1</h2>
-                <fieldset class="preguntaFieldset">
-                    <legend class="question">Pregunta 1</legend>
-                    <input type="radio" name="animal" value="Cat" />Cats<br />
-                    <input type="radio" name="animal" value="Dog" />Dogs<br />
-                    <input type="radio" name="animal" value="Bird" />Birds<br />
-                </fieldset>                -->
+                </c:forEach>
             </div>
 
             <hr>
 
             <footer>
-                <p>&copy; Jose Quichimbo 2015</p>
+                <p>&copy; Roberth Loaiza, Jose Quichimbo 2016</p>
             </footer>
         </div> <!-- /container --> 
     </body>
