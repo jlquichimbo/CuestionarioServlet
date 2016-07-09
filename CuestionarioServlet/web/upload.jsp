@@ -8,6 +8,9 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
@@ -36,7 +39,7 @@
                 </tr>
             </table>
             <p/>
-            <input type="submit" value="Upload File"/>
+            <input class="btn btn-success" type="submit" value="Upload File"/>
         </form>
     </body>
 </html>

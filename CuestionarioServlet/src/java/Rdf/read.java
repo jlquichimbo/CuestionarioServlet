@@ -52,21 +52,21 @@ public class read extends HttpServlet {
         //property option
         // String optionPropertyURI = "ex:option";
         //String OpcionC = "ex:correct";
-        String OpcionC = request.getParameter("correcta");
+        String optionCorrectPropertyURI = request.getParameter("correcta");
         String groupResourceURI = request.getParameter("grupo");
         String questionResourceURI = request.getParameter("pregunta");
         String optionPropertyURI = request.getParameter("respuesta");
 
 
         /*WRITE JSON*/
-        Map cuestionarioJson = generarCuestionario(model, groupResourceURI, questionResourceURI, optionPropertyURI);
+        Map cuestionarioJson = generarCuestionario(model, groupResourceURI, questionResourceURI, optionPropertyURI, optionCorrectPropertyURI);
         request.setAttribute("cuestionario", cuestionarioJson);
         request.getRequestDispatcher("/cuestionario.jsp").forward(request, response);
 
     } // end of doPost()
 
     public static Map generarCuestionario(Model model, String groupResourceURI,
-            String questionResourceURI, String optionPropertyURI) throws JsonProcessingException {
+            String questionResourceURI, String optionPropertyURI, String optionCorrectPropertyURI) throws JsonProcessingException {
         /*Declaracion de variables*/
 //        ArrayList<String> optionsList;
         Map<String, ArrayList> groupsDictionary;
@@ -90,7 +90,7 @@ public class read extends HttpServlet {
         String optionQuestionString;
         Statement correctOption;
 //        String optionPropertyURI = "http://example.org/option";
-        String optionCorrectPropertyURI = "http://example.org/correct";
+//        String optionCorrectPropertyURI = "http://example.org/correct";
         ArrayList<Opcion> opciones;
 
         /*ITERATE GROUPS*/
