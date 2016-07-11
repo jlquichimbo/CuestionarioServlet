@@ -6,6 +6,7 @@
 package Rdf;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -25,7 +26,7 @@ import org.apache.jena.vocabulary.RDFS;
 public class Write {
 
     public static Map generarCuestionario(Model model, String groupResourceURI,
-            String questionResourceURI, String optionPropertyURI, String optionCorrectPropertyURI) throws JsonProcessingException {
+            String questionResourceURI, String optionPropertyURI, String optionCorrectPropertyURI, InputStream is, String formato) throws JsonProcessingException {
         /*Declaracion de variables*/
 //        ArrayList<String> optionsList;
         Map<String, ArrayList> groupsDictionary;
@@ -49,7 +50,8 @@ public class Write {
         Statement correctOption;
 //        String optionCorrectPropertyURI = "http://example.org/correct";
         ArrayList<Opcion> opciones;
-
+        model.read(is, null, formato);
+        System.out.println(formato);
         /*ITERATE GROUPS*/
         iterGroup = model.listStatements(new SimpleSelector(null, RDF.type, model.getResource(groupResourceURI)));
         grupos = new ArrayList<>();

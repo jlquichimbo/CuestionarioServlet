@@ -15,7 +15,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-                <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -31,11 +31,16 @@
 
         <div class="col-md-offset-4 "><br><br><br><br><br><br><br><br><br><br><br><br>
             <form class="col-md-12 col-sm-12" action="upload" method="post" enctype="multipart/form-data">
-                
+
 
                 <div class="form-group row">
-                    <label for="exampleInputFile">Select File :</label>
+                    <label for="exampleInputFile">Format File :</label>
+                    <select name="archivo">
+                        <option value="RDF/XML">RDF/XML</option>
+                        <option value="TTL">TTL</option>
+                    </select>
                     <input type="file" name="file">
+                    
                 </div>
 
                 <div class="form-group row">
