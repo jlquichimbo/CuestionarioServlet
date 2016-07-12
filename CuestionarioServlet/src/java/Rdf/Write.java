@@ -40,7 +40,7 @@ public class Write {
         StmtIterator iterQuestion;
         Resource actualQuestionResource;
         String actualQuestionString;
- //       String questionPropertyURI = "http://example.org/question";
+        //       String questionPropertyURI = "http://example.org/question";
         ArrayList<Pregunta> preguntas;
         //Opcion
         StmtIterator iterOption;

@@ -42,25 +42,61 @@
 
         <div class="container">
             <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+            <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
             <div class="row containerGroups">
-                <c:forEach items="${cuestionario.grupos}" var="grupo">
-                    <h2 class="group">${grupo.label}</h2>
-                    <c:forEach items="${grupo.preguntas}" var="pregunta">
-                        <fieldset class="preguntaFieldset">
-                            <legend class="question">${pregunta.label}</legend>
-                            <c:forEach items="${pregunta.opciones}" var="opcion">
-                                <div class="opcionesDiv" name="${opcion.id}">
-                                <input class="respuestas" pregunta="${pregunta.id}" correct="${pregunta.idCorrect}" 
-                                       type="radio" name="${pregunta.id}" value="${opcion.id}" /> ${opcion.label}<br />
-                                </div>
-                            </c:forEach>
-                        </fieldset>  
-                        <br>
-                    </c:forEach>
-                </c:forEach>
+                <c:choose>
+                    <c:when test="${fn:length(cuestionario.grupos) == 0}">
+                        <!--if grupos.lenght() == 0. Si no se encuentra preguntas-->
+                        <div class="alert alert-danger">
+                            <p>Error al cargar grupos. Verifique el archivo o la variable para la entidad Grupo</p>
+                        </div>
+                    </c:when>
+
+                    <c:otherwise>
+                        <!--Caso contrario recorrer grupos-->
+                        <c:forEach items="${cuestionario.grupos}" var="grupo">
+                            <h2 class="group">${grupo.label}</h2>
+                            <c:choose>
+                                <c:when test="${fn:length(grupo.preguntas) == 0}">
+                                    <!--if preguntas.lenght() == 0. Si no se encuentra preguntas-->
+                                    <div class="alert alert-danger">
+                                        <p>Error al cargar Preguntas. Verifique el archivo o la variable para el predicado pregunta</p>
+                                    </div>
+                                </c:when>
+
+                                <c:otherwise>   
+                                    <!--Caso contrario recorrer preguntas-->
+                                    <c:forEach items="${grupo.preguntas}" var="pregunta">
+                                        <fieldset class="preguntaFieldset">
+                                            <legend class="question">${pregunta.label}</legend>
+                                            <c:choose>
+                                                <c:when test="${fn:length(pregunta.opciones) == 0}">
+                                                    <!--if opciones.lenght() == 0. Si no se encuentran opciones/respuestas-->
+                                                    <div class="alert alert-danger">
+                                                        <p>Error al cargar Opciones. Verifique el archivo o la variable para el predicado respuesta</p>
+                                                    </div>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <!--Caso contrario iterar respuestas-->
+                                                    <c:forEach items="${pregunta.opciones}" var="opcion">
+                                                        <div class="opcionesDiv" name="${opcion.id}">
+                                                            <input class="respuestas" pregunta="${pregunta.id}" correct="${pregunta.idCorrect}" 
+                                                                   type="radio" name="${pregunta.id}" value="${opcion.id}" /> ${opcion.label}<br />
+                                                        </div>
+                                                    </c:forEach>
+                                                </c:otherwise> 
+                                            </c:choose>
+                                        </fieldset>  
+                                        <br>
+                                    </c:forEach>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:forEach>
+                    </c:otherwise>
+                </c:choose>
             </div>
             <input id="terminarBtn" class="pull-right btn btn-success" type="button" value="Calificar"/>
-            <input onclick="location.href='upload.jsp';" class="pull-right btn btn-error" type="button" value="Atras"/>
+            <input onclick="location.href = 'upload.jsp';" class="pull-right btn btn-error" type="button" value="Atras"/>
         </div> <!-- /container --> 
 
 
@@ -78,12 +114,12 @@
             $(".respuestas:checked").each(function () {
                 optionSelected = $(this).val();
                 optionCorrect = $(this).attr("correct");
-                if(optionSelected == optionCorrect){
-                    $("div[name='"+optionSelected+"']").addClass("alert alert-success");
-                }else{
-                    $("div[name='"+optionSelected+"']").addClass("alert alert-danger");
-                    $("div[name='"+optionCorrect+"']").addClass("alert alert-success");
-                    
+                if (optionSelected == optionCorrect) {
+                    $("div[name='" + optionSelected + "']").addClass("alert alert-success");
+                } else {
+                    $("div[name='" + optionSelected + "']").addClass("alert alert-danger");
+                    $("div[name='" + optionCorrect + "']").addClass("alert alert-success");
+
                 }
 //                console.log("selected:"+ optionSelected+"     Correct:"+optionCorrect);
             });
