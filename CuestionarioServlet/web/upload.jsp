@@ -34,13 +34,17 @@
 
 
                 <div class="form-group row">
-                    <label for="exampleInputFile">Format File :</label>
-                    <select name="archivo">
-                        <option value="RDF/XML">RDF/XML</option>
-                        <option value="TTL">TTL</option>
-                    </select>
+                    <label for="exampleInputFile" class="col-sm-2 control-label">File :</label>
                     <input type="file" name="file">
-                    
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputFile" class="col-sm-2 control-label">Format File :</label>
+                    <div class="col-sm-2">
+                        <select name="archivo" class="form-control col-md-4">
+                            <option value="RDF/XML">RDF/XML</option>
+                            <option value="TTL">TTL</option>
+                        </select>
+                    </div>
                 </div>
 
                 <div class="form-group row">
