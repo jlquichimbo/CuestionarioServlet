@@ -48,6 +48,7 @@ public class Write {
         Resource actualOptionResource;
         String optionQuestionString;
         Statement correctOption;
+        int numPreguntas = 0;
 //        String optionCorrectPropertyURI = "http://example.org/correct";
         ArrayList<Opcion> opciones;
         model.read(is, null, formato);
@@ -68,6 +69,7 @@ public class Write {
                 /*ITERATE QUESTIONS*/
                 if (iterQuestion.hasNext()) {
                     while (iterQuestion.hasNext()) {
+                        numPreguntas++;
                         Pregunta objectPregunta;
                         opciones = new ArrayList<>();
                         actualQuestionResource = model.getResource(iterQuestion.nextStatement().getObject().toString());

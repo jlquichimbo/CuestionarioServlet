@@ -32,10 +32,10 @@
         <!-- Main jumbotron for a primary marketing message or call to action -->
         <div class="jumbotron">
             <div class="container">
-                <p class="text-right">Desarrolle el presente examen</p>
-                <!--<p><a id="get_data" class="btn btn-primary btn-lg" href="#" role="button">Mostrar Datos &raquo;</a></p>-->
-                <div id="json_out">
-
+                <p class="text-left bold">Desarrolle el presente examen</p>
+                <div class="form-group col-md-3">
+                    <label for="sobre">El examen se califica sobre:</label>
+                    <input type="text" class="form-control" id="sobreCalificacion" value="10" form="formCalificar">
                 </div>
             </div>
         </div>
@@ -43,6 +43,9 @@
         <div class="container">
             <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
             <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+            <%! int countPreguntas = 0;%>
+            <%! int countCorrectas = 0;%>
+
             <div class="row containerGroups">
                 <c:choose>
                     <c:when test="${fn:length(cuestionario.grupos) == 0}">
@@ -66,7 +69,9 @@
 
                                 <c:otherwise>   
                                     <!--Caso contrario recorrer preguntas-->
+
                                     <c:forEach items="${grupo.preguntas}" var="pregunta">
+                                        <% countPreguntas++;%>
                                         <fieldset class="preguntaFieldset">
                                             <legend class="question">${pregunta.label}</legend>
                                             <c:choose>
@@ -95,10 +100,19 @@
                     </c:otherwise>
                 </c:choose>
             </div>
-            <input id="terminarBtn" class="pull-right btn btn-success" type="button" value="Calificar"/>
+            <form id="formCalificar">
+                <input type="hidden" id="numPreguntas" name="numPreguntas" value="<%=countPreguntas%>">
+                <input type="hidden" id="numCorrectas" name="numCorrectas">
+                <input type="hidden" id="calificacion" name="calificacion">
+                <input type="hidden" id="calificacion" name="sobre">
+                <div id="divCalificacion" style="display: none"></div>
+                <button id="terminarBtn" type="submit" class="pull-right btn btn-success">Calificar</button>
+                <!--<input id="terminarBtn" class="pull-right btn btn-success" type="button" value="Calificar"/>-->
+            </form>
             <input onclick="location.href = 'upload.jsp';" class="pull-right btn btn-error" type="button" value="Atras"/>
         </div> <!-- /container --> 
 
+        <div id="result"></div>
 
         <hr>
     </body>
@@ -106,23 +120,57 @@
         <p class="text-center">&copy; Roberth Loaiza, Jose Quichimbo 2016</p>
     </footer>
     <script>
-//        CALIFICACION VIA SCRIPT
-        $("#terminarBtn").click(function () {
+        //        CALIFICACION VIA SCRIPT
+        $("#terminarBtn").click(function (event) {
+            event.preventDefault();
+
+            var numPreguntas = 0;
+            var countCorrectas = 0;
             var optionSelected;
             var optionCorrect;
-            console.log("Preguntas seleccionadas");
+            var sobreCalificacion = $("#sobreCalificacion").val();
             $(".respuestas:checked").each(function () {
+                numPreguntas++;
                 optionSelected = $(this).val();
                 optionCorrect = $(this).attr("correct");
-                if (optionSelected == optionCorrect) {
+                if (optionSelected == optionCorrect) {//Respuesta correcta
+                    countCorrectas++;
                     $("div[name='" + optionSelected + "']").addClass("alert alert-success");
-                } else {
+
+                } else {//Respuesta incorrecta
                     $("div[name='" + optionSelected + "']").addClass("alert alert-danger");
                     $("div[name='" + optionCorrect + "']").addClass("alert alert-success");
 
                 }
-//                console.log("selected:"+ optionSelected+"     Correct:"+optionCorrect);
             });
+            $("#numCorrectas").val(countCorrectas);
+            var calificacion = reglaDeTres(numPreguntas, countCorrectas, sobreCalificacion);
+            calificacion = calificacion.toFixed(2);
+            $("#calificacion").val(calificacion);
+            $("#sobre").val(sobreCalificacion);
+            $("#divCalificacion")
+                    .show(1000)
+                    .html("<h2>CALIFICACION: " + calificacion + "/" + sobreCalificacion + "</h2>")
+                    .focus();
+            //Funcion para enviar por ajax y no se pierda la calificacion jQuery
+            sendAjax();
         });
+
+        function reglaDeTres(numPreguntas, numCorrectas, sobreCalificacion) {
+            var calificacion;
+            calificacion = (numCorrectas * sobreCalificacion) / numPreguntas;
+            return calificacion;
+        }
+
+        //Envia el formulario por ajax, para generar el resultado en rdf
+        function sendAjax() {
+            $.ajax({
+                url: 'Calificacion',
+                data: $("#formCalificar").serialize(),
+                success: function (data) {
+                    $('#result').html(data);
+                }
+            });
+        }
     </script>
 </html>
